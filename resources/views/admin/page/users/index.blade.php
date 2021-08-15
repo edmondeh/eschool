@@ -42,6 +42,7 @@
 		            <tr>
 		              <th style="text-align:center;"><input type="checkbox" id="select-all" /></th>
 		              <!-- <th width="6%">#</th> -->
+		              <th width="6%"></th>
 		              <th>Name</th>
 		              <th>Email</th>
 		              <th>Role</th>
@@ -52,7 +53,8 @@
 		            @foreach($users as $user)<tr data-entry-id="{{ $user->id }}">
 		              <td></td>
 		           	  <!-- <td>{{ $user->id }}</td> -->
-		              <td>{{ $user->name }}</td>
+		              <td><img class="img-circle img-size" src="{{ $user->getFirstMediaUrl('avatars') ? $user->getFirstMediaUrl('avatars') : asset('storage/avatar/images.png') }}" alt="{{ $user->first_name }} {{ $user->last_name }}"></td>
+		              <td>{{ $user->first_name }} {{ $user->last_name }}</td>
 		              <td>{{ $user->email }}</td>
 		              <td>@foreach ($user->roles()->pluck('name') as $role) <span class="label label-success label-many">{{ $role }}</span>@endforeach</td>
 		              <td>
@@ -112,7 +114,7 @@
 <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.colVis.min.js"></script>
-<script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.2.0/js/select.bootstrap4.min.js"></script>
 @endpush
 @push('scr')
 <script>

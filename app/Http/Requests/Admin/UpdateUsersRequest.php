@@ -32,7 +32,8 @@ class UpdateUsersRequest extends FormRequest
 
         if ($request->get('password') == '') {
             return [
-                'name' => 'required|string|max:255|min:3',
+                'first_name' => 'required|string|max:255|min:3',
+                'last_name' => 'required|string|max:255|min:3',
                 'email' => 'required|string|max:255|email',
                 //'password' => 'required_with:password_confirmation|same:password_confirmation|min:6',   
                 //'password_confirmation' => 'required_with:password|min:6',
@@ -40,7 +41,8 @@ class UpdateUsersRequest extends FormRequest
             ];
         } else {
             return [
-                'name' => 'required|string|max:255|min:3',
+                'first_name' => 'required|string|max:255|min:3',
+                'last_name' => 'required|string|max:255|min:3',
                 'email' => 'required|string|max:255|email',
                 'password' => 'required|string|confirmed|min:6',   
                 'password_confirmation' => 'required_with:password|min:6',

@@ -238,6 +238,44 @@ function showAjaxModal(url) {
       success: function(response) {
         jQuery('#modal_ajax .modal-body-1').html(response);
         $(".select2").select2();
+        $('select').selectpicker();
+        $('#birthday').datepicker({
+            autoclose: true
+        });
+        // $(function () {
+        //     $('#datetimepicker1').datetimepicker({
+        //         format: 'DD/MM/YYYY, HH:mm'
+        //     });
+        // });
+        $('#datetimepicker1').datetimepicker({
+                format: 'DD/MM/YYYY, HH:mm'
+            });
+        //$(".phone").inputmask("999/999-999");
       }
+    });
+}
+
+function select_class(class_id) {
+    $.ajax({
+        url: '/admin/subjects/select_class/' + class_id,
+        success: function(response) {
+            jQuery('#select_class').html(response);
+        }
+    });
+}
+function select_section(section_id) {
+    $.ajax({
+        url: '/admin/subjects/select_section/' + section_id,
+        success: function(response) {
+            jQuery('#select_section').html(response);
+        }
+    });
+}
+function select_subject(dep_id, class_id, section_id) {
+    $.ajax({
+        url: '/admin/subjects/select_subject/' + dep_id + '/' + class_id + '/' + section_id,
+        success: function(response) {
+            jQuery('#select_subject').html(response);
+        }
     });
 }

@@ -19,7 +19,7 @@
         </ul>
     </div>
 @endif
-<form method="POST" action="{{ route('admin.users.update', $user->id) }}">{{ method_field('PUT') }}{{ csrf_field() }}
+<form method="POST" action="{{ route('admin.users.update', $user->id) }}" enctype="multipart/form-data">{{ method_field('PUT') }}{{ csrf_field() }}
 <table class="table table-hover1 table-bordered">
 	<thead>
 		<tr>
@@ -29,8 +29,12 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td>Name: *</td>
-			<td><input type="text" class="form-control" name="name" value="{{ old('name') ? old('name') : $user->name }}" required></td>
+			<td>First name: *</td>
+			<td><input type="text" class="form-control" name="first_name" value="{{ old('first_name') ? old('first_name') : $user->first_name }}" required></td>
+		</tr>
+		<tr>
+			<td>Last name: *</td>
+			<td><input type="text" class="form-control" name="last_name" value="{{ old('last_name') ? old('last_name') : $user->last_name }}" required></td>
 		</tr>
 		<tr>
 			<td>Email: *</td>
@@ -59,6 +63,10 @@
 					@endif
 				</select>
 			</td>
+		</tr>
+		<tr>
+			<td>Image: *</td>
+			<td><input type="file" class="form-control" name="avatar" id="avatar"></td>
 		</tr>
 	</tbody>
 </table>

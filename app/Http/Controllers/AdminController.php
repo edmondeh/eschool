@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Professor;
+use App\Models\Student;
 use App\User;
-use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
+// use Spatie\Permission\Models\Role;
 // use App\User;
 // use App\Role;
 
@@ -23,8 +23,13 @@ class AdminController extends Controller
         if (! Gate::allows('users_manage')) {
             return abort(401);
         }
-    	return view('admin.index', [
-    		'active' => 'dashboard'
+
+        return view('admin.index', [
+    		'active' => 'dashboard',
+            'count' => [
+                'students' => Student::count(),
+                'professors' => Professor::count()
+            ]
     	]);
     }
     public function users()

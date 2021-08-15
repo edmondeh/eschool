@@ -22,6 +22,7 @@ class UsersController extends Controller
         if (! Gate::allows('users_manage')) {
             return abort(401);
         }
+        //dd(\Auth::user()->getFirstMediaUrl('avatars', 'thumb'));
         $users = User::all();
 
         return view('admin.page.users.index', [
@@ -100,6 +101,7 @@ class UsersController extends Controller
         if (! Gate::allows('users_manage')) {
             return abort(401);
         }
+
         $user = User::findOrFail($id);
 
         if ($request->get('password') == '') {
@@ -114,6 +116,11 @@ class UsersController extends Controller
 
         $roles = $request->input('roles') ? $request->input('roles') : [];
         $user->syncRoles($roles);
+        // $user->addMediaFromRequest('avatar')->toMediaCollection('avatars');
+
+        if ($request->file('avatar')) {
+            $user->addMediaFromRequest('avatar')->toMediaCollection('avatars');
+        }
 
         //$user->syncRoles([$admin->id, $owner->id]);
         return back()->withErrors($request->errors)->withInput();
@@ -133,7 +140,7 @@ class UsersController extends Controller
         }
         $user = User::findOrFail($id);
         if ($user->delete()) {
-            flash('User ' . $user->name . ' has been deleted.')->error()->important();
+            flash('User ' . $user->first_name . " " .$user->last_name . ' has been deleted.')->error()->important();
         }
 
         //return redirect()->route('admin.page.users.index');

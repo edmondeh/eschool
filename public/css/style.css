@@ -11,6 +11,13 @@ body{
   font-
   background:#f4f4f4;
 } */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+body, div {
+  font-family: 'Open Sans', sans-serif;
+}
+.tbl_row {
+  font-weight: 300;
+}
 .center1 {
   text-align: center;
 }

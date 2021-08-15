@@ -11,6 +11,9 @@
 .bootstrap-timepicker {
   position: relative;
 }
+.bt1 {
+  padding-left: 20px;
+}
 .bootstrap-timepicker.pull-right .bootstrap-timepicker-widget.dropdown-menu {
   left: auto;
   right: 0;

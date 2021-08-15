@@ -1,7 +1,7 @@
     <header class="main-header">
       <a href="{{ url('/') }}" class="logo">
-        <span class="logo-mini"><b>LA</b></span>
-        <span class="logo-lg"><b>{{ Config::get('app.name') }}</b></span>
+        <span class="logo-mini"><b>ES</b></span>
+        <span class="logo-lg"><b1><i class="fa fa-university1 fa-graduation-cap" aria-hidden="true"></i> {{ Config::get('app.name') }}</b1></span>
       </a>
       <nav class="navbar navbar-static-top" role="navigation">
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -79,13 +79,14 @@
             </li>
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="{{ asset('assets/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
-                <span class="hidden-xs">{{ Auth::user()->name }}</span>
+                <!-- <img src="{{ asset('assets/img/user2-160x160.jpg') }}" class="user-image" alt="User Image"> -->
+                <img src="{{Auth::user()->getFirstMediaUrl('avatars') }}" class="user-image" alt="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
+                <span class="hidden-xs">{{ ucwords(Auth::user()->first_name) }}</span>
               </a>
               <ul class="dropdown-menu">
                 <li class="user-header">
-                  <img src="{{ asset('assets/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
-                  <p> {{ Auth::user()->name }} - @foreach(Auth::user()->roles as $role) {{ $role->display_name }} @endforeach <small>Member since Nov. 2012</small>
+                  <img src="{{Auth::user()->getFirstMediaUrl('avatars') }}" class="img-circle" alt="{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}">
+                  <p> {{ ucwords(Auth::user()->first_name) }} - @foreach(Auth::user()->roles as $role) {{ $role->name }} @endforeach <small>Member since Nov. 2012</small>
                   </p>
                 </li>
                 <li class="user-body">

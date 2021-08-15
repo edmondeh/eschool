@@ -38,4 +38,13 @@ class HomeController extends Controller
 
         return view('home', ['roles' => $roles]);
     }
+
+    public function check_role()
+    {
+        $user = Auth::user();
+
+        $roles = $user->roles;
+
+        return redirect('/'.$roles->first()->name);
+    }
 }
