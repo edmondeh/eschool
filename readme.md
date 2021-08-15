@@ -1,1 +1,1 @@
-# laravel-auth
+# eSchool - School system mangment
